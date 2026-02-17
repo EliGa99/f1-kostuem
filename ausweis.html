@@ -1,32 +1,135 @@
-<!DOCTYPE html>
+
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Mercedes F1 Crew ID</title>
-  <style>
-    body {
-      background: black;
-      color: white;
-      text-align: center;
-      font-family: Arial;
-      padding-top: 50px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercedes F1 Crew ID</title>
 
-    img {
-      width: 300px;
-      border: 3px solid silver;
-      border-radius: 10px;
-    }
-  </style>
+<style>
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #003b46, #000);
+  color: #00d2be;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* Header Glow */
+h1 {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px #00d2be;
+  margin-bottom: 5px;
+}
+
+.sub {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+/* ID Card */
+.card {
+  background: rgba(0,0,0,0.6);
+  border: 2px solid #00d2be;
+  border-radius: 12px;
+  padding: 20px;
+  width: 330px;
+  margin: auto;
+  box-shadow: 0 0 20px #00d2be55;
+}
+
+.card img {
+  width: 260px;
+  border-radius: 10px;
+  border: 2px solid #00d2be;
+  margin-bottom: 15px;
+}
+
+/* Info Table */
+.info {
+  text-align: left;
+  margin: 0 auto;
+  width: 85%;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #cceeee;
+}
+
+.info b {
+  color: #00f5d4;
+}
+
+/* Animated Access Bar */
+.access {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: blink 1.2s infinite alternate;
+}
+
+@keyframes blink {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 25px;
+  background: #00d2be;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #00d2be;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #00f5d4;
+  box-shadow: 0 0 25px #00f5d4;
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  font-size: 0.8rem;
+  color: #777;
+}
+</style>
 </head>
 <body>
 
-<h1>Mercedes AMG F1 Crew</h1>
-<p>ACCESS GRANTED</p>
+<h1>MERCEDES AMG PETRONAS</h1>
+<p class="sub">F1 TEAM – SECURE ACCESS PORTAL</p>
 
+<div class="card">
+  <img src="IMG_0888.png" alt="Crew ID">
 
+  <div class="info">
+    <p><b>Name:</b> Elias G.</p>
+    <p><b>Role:</b> Race Performance Analyst</p>
+    <p><b>Clearance:</b> Level 3 – Engineering Access</p>
+    <p><b>Department:</b> Trackside Data & Strategy</p>
+    <p><b>ID Code:</b> 87668286772</p>
+    <p><b>Specialization:</b> Telemetry, Tyre Modelling, Fuel Delta</p>
+    <p><b>Status:</b> ACTIVE</p>
+  </div>
 
-<img src="IMG_0888.png" alt="Fake Ausweis">
+  <div class="access">ACCESS GRANTED</div>
+</div>
+
+<a class="button" href="analysis.html">▶ OPEN LIVE ANALYSIS</a>
+
+<footer>
+  INTERNAL USE ONLY – FAKE ID FOR ENTERTAINMENT
+</footer>
 
 </body>
 </html>
+
