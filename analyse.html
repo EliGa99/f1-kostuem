@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Race Analysis System</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #00d2be;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: black;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.container {
+  padding: 30px;
+}
+
+.card {
+  background: #111;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #00d2be;
+}
+
+.progress {
+  height: 20px;
+  background: #222;
+  margin-top: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: #00d2be;
+  transition: width 1s;
+}
+</style>
+</head>
+<body>
+
+<header>
+RACE STRATEGY SYSTEM – LIVE ANALYSIS
+</header>
+
+<div class="container">
+
+<div class="card">
+  <h3>Current Lap Time</h3>
+  <p id="lap">--:--</p>
+</div>
+
+<div class="card">
+  <h3>Tire Wear</h3>
+  <div class="progress"><div class="bar" id="tireBar"></div></div>
+</div>
+
+<div class="card">
+  <h3>Engine Temperature</h3>
+  <div class="progress"><div class="bar" id="engineBar"></div></div>
+</div>
+
+<div class="card">
+  <h3>Fuel Level</h3>
+  <div class="progress"><div class="bar" id="fuelBar"></div></div>
+</div>
+
+</div>
+
+<script>
+function randomLap() {
+  let minutes = 1;
+  let seconds = Math.floor(Math.random() * 10) + 20;
+  let millis = Math.floor(Math.random() * 900);
+  return `${minutes}:${seconds}.${millis}`;
+}
+
+function updateData() {
+  document.getElementById("lap").innerText = randomLap();
+
+  document.getElementById("tireBar").style.width = Math.floor(Math.random()*100) + "%";
+  document.getElementById("engineBar").style.width = Math.floor(Math.random()*100) + "%";
+  document.getElementById("fuelBar").style.width = Math.floor(Math.random()*100) + "%";
+}
+
+updateData();
+setInterval(updateData, 2000);
+</script>
+
+</body>
+</html>
