@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Race Analysis System</title>
 
 <style>
@@ -13,7 +14,7 @@ body {
 }
 
 header {
-  background: black;
+  background: linear-gradient(to right, #000, #003b46);
   padding: 15px;
   text-align: center;
   font-weight: bold;
@@ -21,7 +22,9 @@ header {
 }
 
 .container {
-  padding: 30px;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
 }
 
 .card {
@@ -29,6 +32,11 @@ header {
   padding: 20px;
   margin-bottom: 20px;
   border-left: 4px solid #00d2be;
+  box-shadow: 0 0 10px #00d2be55;
+}
+
+.card h3 {
+  margin-top: 0;
 }
 
 .progress {
@@ -43,7 +51,18 @@ header {
   height: 100%;
   width: 0%;
   background: #00d2be;
-  transition: width 1s;
+  transition: width 1.5s ease;
+}
+
+#lap {
+  font-size: 1.6rem;
+  font-weight: bold;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 </style>
 </head>
@@ -58,6 +77,21 @@ RACE STRATEGY SYSTEM – LIVE ANALYSIS
 <div class="card">
   <h3>Current Lap Time</h3>
   <p id="lap">--:--</p>
+</div>
+
+<div class="card">
+  <h3>DRS Status</h3>
+  <p id="drs">--</p>
+</div>
+
+<div class="card">
+  <h3>Weather</h3>
+  <p id="weather">--</p>
+</div>
+
+<div class="card">
+  <h3>Top Speed</h3>
+  <p id="speed">-- km/h</p>
 </div>
 
 <div class="card">
@@ -85,12 +119,36 @@ function randomLap() {
   return `${minutes}:${seconds}.${millis}`;
 }
 
+function smoothValue(oldValue, newValue, factor = 0.2) {
+  return oldValue + (newValue - oldValue) * factor;
+}
+
+let tire = 50, engine = 50, fuel = 80;
+
 function updateData() {
   document.getElementById("lap").innerText = randomLap();
 
-  document.getElementById("tireBar").style.width = Math.floor(Math.random()*100) + "%";
-  document.getElementById("engineBar").style.width = Math.floor(Math.random()*100) + "%";
-  document.getElementById("fuelBar").style.width = Math.floor(Math.random()*100) + "%";
+  // DRS
+  document.getElementById("drs").innerText =
+    Math.random() > 0.5 ? "ENABLED" : "DISABLED";
+
+  // Weather
+  const weatherOptions = ["Sunny", "Cloudy", "Windy", "Rain Incoming", "Track Cooling"];
+  document.getElementById("weather").innerText =
+    weatherOptions[Math.floor(Math.random() * weatherOptions.length)];
+
+  // Speed
+  document.getElementById("speed").innerText =
+    Math.floor(Math.random() * 120 + 280) + " km/h";
+
+  // Smooth telemetry values
+  tire = smoothValue(tire, Math.random() * 100);
+  engine = smoothValue(engine, Math.random() * 100);
+  fuel = smoothValue(fuel, Math.random() * 100);
+
+  document.getElementById("tireBar").style.width = tire + "%";
+  document.getElementById("engineBar").style.width = engine + "%";
+  document.getElementById("fuelBar").style.width = fuel + "%";
 }
 
 updateData();
